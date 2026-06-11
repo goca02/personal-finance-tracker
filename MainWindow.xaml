@@ -8,5 +8,65 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Grid.Row="0"
+               Grid.ColumnSpan="3"
+               Text="Personal Finance Tracker"
+               HorizontalAlignment="Center"
+               Margin="0,20,0,20"
+               FontSize="18"
+               FontWeight="Bold"/>
+
+        <!-- Stanje racuna -->
+        <Label Grid.Row="1"
+           Grid.Column="1"
+           Content="Stanje računa:"
+           HorizontalAlignment="Left"/>
+
+        <Label Grid.Row="1"
+           Grid.Column="1"
+           Content="0.00 RSD"
+           x:Name="lblIznos"
+           HorizontalAlignment="Right"/>
+
+        <!-- Dugmad -->
+        <Button Grid.Row="2"
+            Grid.Column="0"
+            x:Name="btnDodaj"
+            Content="DODAJ"
+            Margin="10"/>
+
+        <Button Grid.Row="2"
+            Grid.Column="1"
+            x:Name="btnIzmeni"
+            Content="IZMENI"
+            Margin="10"/>
+
+        <Button Grid.Row="2"
+            Grid.Column="2"
+            x:Name="btnObrisi"
+            Content="OBRIŠI"
+            Margin="10"/>
+
+        <!-- Tabela -->
+        <DataGrid Grid.Row="3"
+              Grid.ColumnSpan="3"
+              x:Name="dgTransakcije"
+              Margin="10"
+              ColumnWidth="*"/>
+
     </Grid>
 </Window>
