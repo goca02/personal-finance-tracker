@@ -1,0 +1,38 @@
+﻿<Window x:Class="Personal_Finance_Tracker.DodajTransakcijuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Personal_Finance_Tracker"
+        mc:Ignorable="d"
+        Title="DodajTransakcijuWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label"  Content="Naziv:" Grid.Column="0" HorizontalAlignment="Left" Margin="86,40,0,0" Grid.Row="0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Iznos:" Grid.Column="0" HorizontalAlignment="Left" Margin="86,40,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Kategorija:" Grid.Column="0" HorizontalAlignment="Left" Margin="86,40,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Tip:" Grid.Column="0" HorizontalAlignment="Left" Margin="86,40,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="Datum:" Grid.Column="0" HorizontalAlignment="Left" Margin="86,40,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtNaziv" Grid.Column="1" HorizontalAlignment="Left" Margin="300,40,0,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIznos" Grid.Column="1" HorizontalAlignment="Left" Margin="300,40,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtKategorija" Grid.Column="1" HorizontalAlignment="Left" Margin="300,40,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="300,40,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Prihod"/>
+            <ComboBoxItem Content="Rashod"/>
+        </ComboBox>
+        <DatePicker x:Name="datapicker" HorizontalAlignment="Left" Grid.Column="1" Margin="300,40,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnSacuvaj" Content="Sačuvaj" Grid.Column="1" HorizontalAlignment="Left" Margin="300,52,0,0" Grid.Row="5" VerticalAlignment="Top" Width="120" Click="btnSacuvaj_Click"/>
+    </Grid>
+</Window>

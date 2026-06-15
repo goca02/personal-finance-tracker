@@ -47,7 +47,7 @@
             Grid.Column="0"
             x:Name="btnDodaj"
             Content="DODAJ"
-            Margin="10"/>
+            Margin="10" Click="btnDodaj_Click"/>
 
         <Button Grid.Row="2"
             Grid.Column="1"

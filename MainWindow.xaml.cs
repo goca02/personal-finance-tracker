@@ -48,5 +48,19 @@ namespace Personal_Finance_Tracker
             }
             return iznos + " RSD";
         }
+
+        private void btnDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            DodajTransakcijuWindow prozor = new DodajTransakcijuWindow();
+            
+            if (prozor.ShowDialog() == true)
+            {
+                prozor.NovaTransakcija.Id = kontroler.VratiTransakcije().Count+1;
+                kontroler.Dodaj(prozor.NovaTransakcija);
+                dgTransakcije.ItemsSource = null;
+                dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
+                lblIznos.Content = IzracunajIznos();
+            }
+        }
     }
 }

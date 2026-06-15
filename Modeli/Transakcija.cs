@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Personal_Finance_Tracker.Modeli
 {
-    class Transakcija
+    public class Transakcija
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
@@ -14,6 +14,8 @@ namespace Personal_Finance_Tracker.Modeli
         public DateTime Datum { get; set; }
         public string Kategorija { get; set; }
         public string Tip { get; set; }
+
+        
 
     }
 }
