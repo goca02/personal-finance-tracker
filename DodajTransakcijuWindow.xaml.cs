@@ -22,9 +22,28 @@ namespace Personal_Finance_Tracker
     public partial class DodajTransakcijuWindow : Window
     {
         public Transakcija NovaTransakcija { get; set; }
+       
+
         public DodajTransakcijuWindow()
         {
             InitializeComponent();
+        }
+        public DodajTransakcijuWindow(Transakcija t)
+        {
+            InitializeComponent();
+            NovaTransakcija = t;
+            txtNaziv.Text = t.Naziv;
+            txtIznos.Text = t.Iznos.ToString();
+            txtKategorija.Text = t.Kategorija;
+            datapicker.SelectedDate = t.Datum;
+            if (t.Tip == "Prihod")
+            {
+                comboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                comboBox.SelectedIndex = 1;
+            }
         }
 
         private void btnSacuvaj_Click(object sender, RoutedEventArgs e)
@@ -34,7 +53,10 @@ namespace Personal_Finance_Tracker
             string Kategorija = txtKategorija.Text;
             string Tip = comboBox.Text;
             DateTime Datum = datapicker.SelectedDate.Value;
-            NovaTransakcija = new Transakcija();
+            if (NovaTransakcija == null)
+            {
+                NovaTransakcija = new Transakcija();
+            }
             NovaTransakcija.Naziv = Naziv;
             NovaTransakcija.Iznos = Iznos;
             NovaTransakcija.Kategorija = Kategorija;
@@ -42,9 +64,9 @@ namespace Personal_Finance_Tracker
             NovaTransakcija.Datum = Datum;
             DialogResult = true;
             Close();
+            }
+           
 
-
-
-        }
+        
     }
 }

@@ -52,11 +52,49 @@ namespace Personal_Finance_Tracker
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
             DodajTransakcijuWindow prozor = new DodajTransakcijuWindow();
-            
+
             if (prozor.ShowDialog() == true)
             {
-                prozor.NovaTransakcija.Id = kontroler.VratiTransakcije().Count+1;
+                int i = kontroler.VratiTransakcije().Count;
+                prozor.NovaTransakcija.Id = kontroler.VratiTransakcije()[i - 1].Id + 1;
                 kontroler.Dodaj(prozor.NovaTransakcija);
+                dgTransakcije.ItemsSource = null;
+                dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
+                lblIznos.Content = IzracunajIznos();
+            }
+        }
+
+        private void btnObrisi_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgTransakcije.SelectedItem == null)
+            {
+                MessageBox.Show("Morate da prvo selektujete transakciju!","Savet");
+                return;
+            }
+            Transakcija t = (Transakcija)dgTransakcije.SelectedItem;
+            MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisete ovu transakciju?","Potvrda brisanja",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            if (rezultat == MessageBoxResult.No)
+            {
+                return;
+            }
+            kontroler.Obrisi(t);
+            dgTransakcije.ItemsSource = null;
+            dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
+            lblIznos.Content = IzracunajIznos();
+
+        }
+
+        private void btnIzmeni_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgTransakcije.SelectedItem == null)
+            {
+                MessageBox.Show("Morate da selektujete transakciju!", "Savet");
+                return;
+            }
+            Transakcija t = (Transakcija)dgTransakcije.SelectedItem;
+            DodajTransakcijuWindow prozor = new DodajTransakcijuWindow(t);
+            if (prozor.ShowDialog() == true)
+            {
                 dgTransakcije.ItemsSource = null;
                 dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
                 lblIznos.Content = IzracunajIznos();

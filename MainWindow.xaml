@@ -53,13 +53,13 @@
             Grid.Column="1"
             x:Name="btnIzmeni"
             Content="IZMENI"
-            Margin="10"/>
+            Margin="10" Click="btnIzmeni_Click"/>
 
         <Button Grid.Row="2"
             Grid.Column="2"
             x:Name="btnObrisi"
             Content="OBRIŠI"
-            Margin="10"/>
+            Margin="10" Click="btnObrisi_Click"/>
 
         <!-- Tabela -->
         <DataGrid Grid.Row="3"

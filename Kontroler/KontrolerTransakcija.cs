@@ -30,6 +30,11 @@ namespace Personal_Finance_Tracker.Kontroler
             transakcije.Add(t);
         }
 
+        public void Obrisi(Transakcija t)
+        {
+            transakcije.Remove(t);
+        }
+
 
     }
 }
