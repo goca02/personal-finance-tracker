@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Personal_Finance_Tracker.Kontroler;
 using Personal_Finance_Tracker.Modeli;
+using Personal_Finance_Tracker.Baza;
 
 namespace Personal_Finance_Tracker
 {
@@ -26,7 +27,7 @@ namespace Personal_Finance_Tracker
         public MainWindow()
         {
             InitializeComponent();
-
+            DatabaseManager.GetInstance().InitializeDatabase();
             kontroler = new KontrolerTransakcija();
             dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
             lblIznos.Content = IzracunajIznos();
@@ -55,8 +56,7 @@ namespace Personal_Finance_Tracker
 
             if (prozor.ShowDialog() == true)
             {
-                int i = kontroler.VratiTransakcije().Count;
-                prozor.NovaTransakcija.Id = kontroler.VratiTransakcije()[i - 1].Id + 1;
+                
                 kontroler.Dodaj(prozor.NovaTransakcija);
                 dgTransakcije.ItemsSource = null;
                 dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
@@ -95,6 +95,7 @@ namespace Personal_Finance_Tracker
             DodajTransakcijuWindow prozor = new DodajTransakcijuWindow(t);
             if (prozor.ShowDialog() == true)
             {
+                kontroler.Izmeni(prozor.NovaTransakcija);
                 dgTransakcije.ItemsSource = null;
                 dgTransakcije.ItemsSource = kontroler.VratiTransakcije();
                 lblIznos.Content = IzracunajIznos();
